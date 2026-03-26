@@ -1,0 +1,26 @@
+# Altium Designer Gitingore
+# ---
+# History and Backups
+History/
+Children/
+*.Bak
+*.Zip
+
+# Log files and Status Reports
+*.log
+*.DRC
+*.HTML
+Status\ Report.txt
+
+# User specific / Session data
+*.Canvas
+*.Annotation
+*.PcbDoc.htm
+*.SchDoc.htm
+
+# Output folders
+Project\ Outputs\ for\ */
+Out/
+
+# Temporary files
+*.~*

@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=+5 Pin=D9-1
+Added Pin To Net: NetName=TX_2 Pin=J3-4
+Added Pin To Net: NetName=RX_2 Pin=J3-5
+Added Pin To Net: NetName=GND Pin=J3-6
+Added Member To Class: ClassName=Sheet2 Member=Component D9 Schottky SOD-128
+Added Member To Class: ClassName=Sheet2 Member=Component J3 UART2

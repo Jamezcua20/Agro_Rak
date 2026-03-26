@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=GND Pin=J3-1
+Removed Pin From Net: NetName=RX_2 Pin=J3-2
+Removed Pin From Net: NetName=TX_2 Pin=J3-3
+Removed Pin From Net: NetName=NetD9_2 Pin=J3-6
+Added Component: Designator=J3(PIN-HEADER-6-FEMALE-RIGHT-ANGLE)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "MTSW-106-06-T-S-100"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD9_2 Pin=J3-1
+Added Pin To Net: NetName=TX_2 Pin=J3-4
+Added Pin To Net: NetName=RX_2 Pin=J3-5
+Added Pin To Net: NetName=GND Pin=J3-6

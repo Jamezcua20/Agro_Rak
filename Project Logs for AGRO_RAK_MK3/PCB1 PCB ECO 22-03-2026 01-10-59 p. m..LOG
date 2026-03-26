@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=+5 Pin=C8-2
+Removed Pin From Net: NetName=+5 Pin=C9-1
+Removed Pin From Net: NetName=+5 Pin=D9-1
+Removed Pin From Net: NetName=+5 Pin=U4-2
+Added Component: Designator=D10(SODFL4725X110N)
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/PMEG4020ETP,115/Nexperia/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Nexperia USA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "PMEG4020ETP,115"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "CFP5-2 Nexperia USA Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/PMEG4020ETP,115/Nexperia/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5 Pin=D10-2
+Change Net Name : Old Net Name=+5 New Net Name=V_BAT
+Added Pin To Net: NetName=+5 Pin=C8-2
+Added Pin To Net: NetName=+5 Pin=C9-1
+Added Pin To Net: NetName=+5 Pin=D9-1
+Added Pin To Net: NetName=+5 Pin=D10-1
+Added Pin To Net: NetName=+5 Pin=U4-2
+Added Net: Name=+5
+Added Member To Class: ClassName=Sheet2 Member=Component D10 Schottky SOD-128

@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=V_BAT Pin=3-1
+Removed Pin From Net: NetName=NetD5_2 Pin=3-2
+Removed Member From Class: ClassName=Sheet2 Member=3
+Change Component Designator: OldDesignator=BOOT NewDesignator=SW1
+Change Component Designator: OldDesignator=RESET NewDesignator=S1
+Added Component: Designator=L1(IND_VLS4012ET-4R7M-CA)
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/VLS4012ET-4R7M-CA/TDK/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "TDK"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "VLS4012ET-4R7M-CA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "NON STANDARD-2 TDK"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/VLS4012ET-4R7M-CA/TDK/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=RS_485_ENA Pin=L1-1
+Added Pin To Net: NetName=NetD5_2 Pin=L1-2
+Added Member To Class: ClassName=Sheet2 Member=Component J3 PIN-HEADER-6
+Added Member To Class: ClassName=Sheet2 Member=Component L1 VLS4012ET-4R7M-CA

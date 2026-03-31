@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=J2 Old Footprint=PIN4_RA New Footprint=PIN-HEADER-4-MALE
+Change Component Comment : Designator=J2 Old Comment=ST_LINK_CONN New Comment=PIN-HEADER-4

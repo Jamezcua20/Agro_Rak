@@ -1,0 +1,10 @@
+Added Component: Designator=J1(JST_B2B-PH-K-S)
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/B2B-PH-K-S/JST/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "JST Sales America Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "B2B-PH-K-S"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/B2B-PH-K-S/JST/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetF1_2 Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Member To Class: ClassName=Sheet2 Member=Component J1 B2B-PH-K-S

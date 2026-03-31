@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetF1_2 Pin=J1-1
+Removed Pin From Net: NetName=GND Pin=J1-2
+Removed Pin From Net: NetName=GND Pin=R7-2
+Removed Pin From Net: NetName=GND Pin=U1-19
+Removed Pin From Net: NetName=GND Pin=U3-4
+Added Pin To Net: NetName=NetF1_2 Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Pin To Net: NetName=RS_485_ENA Pin=R7-2
+Added Pin To Net: NetName=RS_485_ENA Pin=U1-19
+Added Pin To Net: NetName=RS_485_ENA Pin=U3-4
+Added Net: Name=RS_485_ENA
+Added Member To Class: ClassName=Sheet2 Member=Component J1 B2B-PH-K-S
+Added Member To Class: ClassName=Sheet2 Member=Component J5 TRT4

@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=+3.3 Pin=SW1-1
+Removed Pin From Net: NetName=BOOT0 Pin=SW1-2
+Removed Pin From Net: NetName=GND Pin=SW1-3
+Removed Member From Class: ClassName=Sheet2 Member=SW1
+Added Component: Designator=J7(PIN-HEADER-3-MALE)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "MTSW-103-06-T-S-190"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3.3 Pin=J7-1
+Added Pin To Net: NetName=BOOT0 Pin=J7-2
+Added Pin To Net: NetName=GND Pin=J7-3
+Added Member To Class: ClassName=Sheet2 Member=Component J7 PIN-HEADER-3

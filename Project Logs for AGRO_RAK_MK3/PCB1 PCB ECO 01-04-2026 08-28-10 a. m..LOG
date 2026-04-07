@@ -1,0 +1,18 @@
+Added Component: Designator=R17(RESC2013X84N)
+Added Component: Designator=R18(RESC2013X84N)
+Added Component: Designator=R19(RESC2013X84N)
+Add Pin To Net: Unknown Pin: Pin LD2-1
+Add Pin To Net: Unknown Pin: Pin LD2-2
+Add Pin To Net: Unknown Pin: Pin LD3-1
+Add Pin To Net: Unknown Pin: Pin LD3-2
+Add Pin To Net: Unknown Pin: Pin LD4-1
+Add Pin To Net: Unknown Pin: Pin LD4-2
+Added Pin To Net: NetName=NetLD2_2 Pin=R17-1
+Added Pin To Net: NetName=INIT_LED Pin=R17-2
+Added Pin To Net: NetName=NetLD3_2 Pin=R18-1
+Added Pin To Net: NetName=LORA_LED Pin=R18-2
+Added Pin To Net: NetName=NetLD4_2 Pin=R19-1
+Added Pin To Net: NetName=RS485_LED Pin=R19-2
+Added Member To Class: ClassName=Sheet2 Member=Component R17 330
+Added Member To Class: ClassName=Sheet2 Member=Component R18 330
+Added Member To Class: ClassName=Sheet2 Member=Component R19 330

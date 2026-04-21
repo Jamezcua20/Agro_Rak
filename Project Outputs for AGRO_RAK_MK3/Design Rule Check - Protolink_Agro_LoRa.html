@@ -1,0 +1,524 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">20/04/2026</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:20:34 p. m.</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc" class="file"><acronym title="C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc">C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">60</td></tr>
+</table>
+</td>
+</table><a name="IDLSIESBBPOREROOA0NJZ0BYYR4G3UH3CFXAEHEVMA14OG2JDZQWPK"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLZXGNMCA03RGEKCYQBY5ATHR3LQ5VX13EP3HTMID4UONP5LNSPPF">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZAYX5N5JJVAOJPRJF5NCZMVNTJF25AWXR2SFXYBHEANZNUBNW3XF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3IJTSAXKSXPAEEK533KMNYH00K0TEH5SGB5WRVLDFXI10LXGKRBD">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5RJUC3ZPWWAVJ5XQIMBVXLLCSH4VPQAWIPOMYGNQZQ20NVZJTNGN">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDASZFEBZAOQTDHN4CKWWXV2MW3J45VDJC303TUQOIQRJ1ZM1IOBYO">Width Constraint (Min=0.203mm) (Max=0.381mm) (Preferred=0.254mm) (InNetClass('Señal'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDV2ZUSOXMEQTPDM1RIBSS1SHMXKGZJXX1AILAHFL04VBCEZ1H0Z4">Width Constraint (Min=0.203mm) (Max=0.635mm) (Preferred=0.381mm) (InNetClass('Power_low'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJZI1X1CNN2YGIVQ4SM5T03J3ROQ1IND1HJ1YCQKW1RMBN0UQYWOL">Width Constraint (Min=0.381mm) (Max=1.016mm) (Preferred=0.635mm) (InNetClass('Power_High'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSKMPJPN004BEKX4C0KL5U1KNOHASGAKNJNKFFDDZXPPCIMQG0DEP">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRVTSBJF0DFDRCCGSSPH0Q4K34OEJ4DONMURXE3GVRHKXNSKVSR0N">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWXICMFN4RM13BLWVXLZQ4SK03E2OAN0B3CKQUHJKH4KTN0NJKI0I">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZDVPUTY41M23GNJJKCHJAPWHBGJ33K2C5FPGOWJAJXZF0SVX4Z3M">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">27</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNUXTDN3QXIGKMYWMUKUGDZQEWF22UMA0LMTRFLGWXRHFM03T2YKG">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">30</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCCNOFGWS0U25OCDWF5WAQXIERHJ4I0WYHI2L0FGA5311WC5DWNJJ">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRO42WM3XU2JPDG35VFEFMROVBOF52OEDF4XC23LCG02GRR34YLAN">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID32HLVD105J0OMY5RUNL5TMDOZASYNZXTEC4IKKG1YHWUAZ25HYH">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">60</td>
+</tr>
+</table><br><a name="IDZDVPUTY41M23GNJJKCHJAPWHBGJ33K2C5FPGOWJAJXZF0SVX4Z3M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1530.32mil|Location2.Y=1541.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1530.32mil|Location2.Y=1541.57mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-1(38.354mm,38.513mm) on Top Layer And Pad U1-2(38.354mm,39.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1884.651mil|Location2.Y=1895.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1884.651mil|Location2.Y=1895.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-10(38.354mm,47.513mm) on Top Layer And Pad U1-11(38.354mm,48.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1845.281mil|Location2.Y=1856.531mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1845.281mil|Location2.Y=1856.531mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-10(38.354mm,47.513mm) on Top Layer And Pad U1-9(38.354mm,46.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1924.021mil|Location2.Y=1935.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1924.021mil|Location2.Y=1935.271mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-11(38.354mm,48.513mm) on Top Layer And Pad U1-12(38.354mm,49.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1173.666mil|Location2.X=1184.916mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1173.666mil|Location2.X=1184.916mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-13(30.454mm,51.913mm) on Top Layer And Pad U1-14(29.454mm,51.913mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.296mil|Location2.X=1145.546mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.296mil|Location2.X=1145.546mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-14(29.454mm,51.913mm) on Top Layer And Pad U1-15(28.454mm,51.913mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1094.926mil|Location2.X=1106.176mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1094.926mil|Location2.X=1106.176mil|Location1.Y=2077.643mil|Location2.Y=2088.893mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-15(28.454mm,51.913mm) on Top Layer And Pad U1-16(27.454mm,51.913mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1924.021mil|Location2.Y=1935.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1924.021mil|Location2.Y=1935.271mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-17(23.554mm,49.513mm) on Top Layer And Pad U1-18(23.554mm,48.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1884.651mil|Location2.Y=1895.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1884.651mil|Location2.Y=1895.901mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-18(23.554mm,48.513mm) on Top Layer And Pad U1-19(23.554mm,47.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1569.69mil|Location2.Y=1580.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1569.69mil|Location2.Y=1580.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-2(38.354mm,39.513mm) on Top Layer And Pad U1-3(38.354mm,40.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1648.43mil|Location2.Y=1659.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1648.43mil|Location2.Y=1659.68mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-20(23.554mm,42.513mm) on Top Layer And Pad U1-21(23.554mm,41.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1609.06mil|Location2.Y=1620.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1609.06mil|Location2.Y=1620.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-21(23.554mm,41.513mm) on Top Layer And Pad U1-22(23.554mm,40.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1569.69mil|Location2.Y=1580.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1569.69mil|Location2.Y=1580.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-22(23.554mm,40.513mm) on Top Layer And Pad U1-23(23.554mm,39.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1530.32mil|Location2.Y=1541.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=961.146mil|Location2.X=972.396mil|Location1.Y=1530.32mil|Location2.Y=1541.57mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-23(23.554mm,39.513mm) on Top Layer And Pad U1-24(23.554mm,38.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1094.926mil|Location2.X=1106.176mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1094.926mil|Location2.X=1106.176mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-25(27.454mm,36.613mm) on Top Layer And Pad U1-26(28.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.296mil|Location2.X=1145.546mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1134.296mil|Location2.X=1145.546mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-26(28.454mm,36.613mm) on Top Layer And Pad U1-27(29.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1173.666mil|Location2.X=1184.916mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1173.666mil|Location2.X=1184.916mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-27(29.454mm,36.613mm) on Top Layer And Pad U1-28(30.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.036mil|Location2.X=1224.286mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1213.036mil|Location2.X=1224.286mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-28(30.454mm,36.613mm) on Top Layer And Pad U1-29(31.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1252.406mil|Location2.X=1263.656mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1252.406mil|Location2.X=1263.656mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-29(31.454mm,36.613mm) on Top Layer And Pad U1-30(32.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1609.06mil|Location2.Y=1620.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1609.06mil|Location2.Y=1620.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-3(38.354mm,40.513mm) on Top Layer And Pad U1-4(38.354mm,41.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1291.776mil|Location2.X=1303.026mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1291.776mil|Location2.X=1303.026mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-30(32.454mm,36.613mm) on Top Layer And Pad U1-31(33.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1331.147mil|Location2.X=1342.397mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1331.147mil|Location2.X=1342.397mil|Location1.Y=1396.383mil|Location2.Y=1407.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-31(33.454mm,36.613mm) on Top Layer And Pad U1-32(34.454mm,36.613mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1648.43mil|Location2.Y=1659.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1648.43mil|Location2.Y=1659.68mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-4(38.354mm,41.513mm) on Top Layer And Pad U1-5(38.354mm,42.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1687.8mil|Location2.Y=1699.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1687.8mil|Location2.Y=1699.05mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-5(38.354mm,42.513mm) on Top Layer And Pad U1-6(38.354mm,43.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1727.17mil|Location2.Y=1738.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1727.17mil|Location2.Y=1738.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-6(38.354mm,43.513mm) on Top Layer And Pad U1-7(38.354mm,44.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1766.54mil|Location2.Y=1777.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1766.54mil|Location2.Y=1777.79mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-7(38.354mm,44.513mm) on Top Layer And Pad U1-8(38.354mm,45.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1805.91mil|Location2.Y=1817.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1543.824mil|Location2.X=1555.074mil|Location1.Y=1805.91mil|Location2.Y=1817.16mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.254mm) Between Pad U1-8(38.354mm,45.513mm) on Top Layer And Pad U1-9(38.354mm,46.513mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDNUXTDN3QXIGKMYWMUKUGDZQEWF22UMA0LMTRFLGWXRHFM03T2YKG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2167.385mil|Location2.X=2178.635mil|Location1.Y=1415.645mil|Location2.Y=1426.895mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2167.385mil|Location2.X=2178.635mil|Location1.Y=1415.645mil|Location2.Y=1426.895mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.205mm &lt; 0.254mm) Between Pad D15-1(55.622mm,36.519mm) on Top Layer And Track (54.992mm,36.069mm)(54.992mm,38.569mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.205mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=737.168mil|Location2.Y=748.418mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=737.168mil|Location2.Y=748.418mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD2-A(4.317mm,19.467mm) on Top Layer And Track (3.217mm,18.867mm)(3.617mm,18.867mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=784.412mil|Location2.Y=795.662mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=784.412mil|Location2.Y=795.662mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD2-A(4.317mm,19.467mm) on Top Layer And Track (3.217mm,20.067mm)(3.617mm,20.067mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=737.168mil|Location2.Y=748.418mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=737.168mil|Location2.Y=748.418mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD2-C(2.517mm,19.467mm) on Top Layer And Track (3.217mm,18.867mm)(3.617mm,18.867mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=784.412mil|Location2.Y=795.662mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=784.412mil|Location2.Y=795.662mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD2-C(2.517mm,19.467mm) on Top Layer And Track (3.217mm,20.067mm)(3.617mm,20.067mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=967.131mil|Location2.Y=978.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=967.131mil|Location2.Y=978.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD3-A(4.317mm,25.308mm) on Top Layer And Track (3.217mm,24.708mm)(3.617mm,24.708mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=1014.375mil|Location2.Y=1025.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.698mil|Location2.X=152.948mil|Location1.Y=1014.375mil|Location2.Y=1025.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD3-A(4.317mm,25.308mm) on Top Layer And Track (3.217mm,25.908mm)(3.617mm,25.908mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=967.131mil|Location2.Y=978.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=967.131mil|Location2.Y=978.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD3-C(2.517mm,25.308mm) on Top Layer And Track (3.217mm,24.708mm)(3.617mm,24.708mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=1014.375mil|Location2.Y=1025.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.107mil|Location2.X=127.357mil|Location1.Y=1014.375mil|Location2.Y=1025.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD3-C(2.517mm,25.308mm) on Top Layer And Track (3.217mm,25.908mm)(3.617mm,25.908mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.737mil|Location2.X=152.987mil|Location1.Y=1205.753mil|Location2.Y=1217.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.737mil|Location2.X=152.987mil|Location1.Y=1205.753mil|Location2.Y=1217.003mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD4-A(4.318mm,31.369mm) on Top Layer And Track (3.218mm,30.769mm)(3.618mm,30.769mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.737mil|Location2.X=152.987mil|Location1.Y=1252.997mil|Location2.Y=1264.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=141.737mil|Location2.X=152.987mil|Location1.Y=1252.997mil|Location2.Y=1264.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD4-A(4.318mm,31.369mm) on Top Layer And Track (3.218mm,31.969mm)(3.618mm,31.969mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.147mil|Location2.X=127.397mil|Location1.Y=1205.753mil|Location2.Y=1217.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.147mil|Location2.X=127.397mil|Location1.Y=1205.753mil|Location2.Y=1217.003mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD4-C(2.518mm,31.369mm) on Top Layer And Track (3.218mm,30.769mm)(3.618mm,30.769mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.147mil|Location2.X=127.397mil|Location1.Y=1252.997mil|Location2.Y=1264.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=116.147mil|Location2.X=127.397mil|Location1.Y=1252.997mil|Location2.Y=1264.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD4-C(2.518mm,31.369mm) on Top Layer And Track (3.218mm,31.969mm)(3.618mm,31.969mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.432mil|Location2.X=2644.682mil|Location1.Y=1835.567mil|Location2.Y=1846.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.432mil|Location2.X=2644.682mil|Location1.Y=1835.567mil|Location2.Y=1846.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD5-A(67.632mm,47.341mm) on Top Layer And Track (67.032mm,46.241mm)(67.032mm,46.641mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2680.676mil|Location2.X=2691.926mil|Location1.Y=1835.567mil|Location2.Y=1846.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2680.676mil|Location2.X=2691.926mil|Location1.Y=1835.567mil|Location2.Y=1846.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD5-A(67.632mm,47.341mm) on Top Layer And Track (68.232mm,46.241mm)(68.232mm,46.641mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.432mil|Location2.X=2644.682mil|Location1.Y=1809.977mil|Location2.Y=1821.227mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2633.432mil|Location2.X=2644.682mil|Location1.Y=1809.977mil|Location2.Y=1821.227mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD5-C(67.632mm,45.541mm) on Top Layer And Track (67.032mm,46.241mm)(67.032mm,46.641mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2680.676mil|Location2.X=2691.926mil|Location1.Y=1809.977mil|Location2.Y=1821.227mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2680.676mil|Location2.X=2691.926mil|Location1.Y=1809.977mil|Location2.Y=1821.227mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.254mm) Between Pad LD5-C(67.632mm,45.541mm) on Top Layer And Track (68.232mm,46.241mm)(68.232mm,46.641mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.064mil|Location2.X=1733.314mil|Location1.Y=981.669mil|Location2.Y=992.919mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1722.064mil|Location2.X=1733.314mil|Location1.Y=981.669mil|Location2.Y=992.919mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.199mm &lt; 0.254mm) Between Pad U3-1(44.116mm,24.699mm) on Top Layer And Text "*" (43.545mm,25.13mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.199mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=305.875mil|Location2.Y=317.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=305.875mil|Location2.Y=317.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-1(61.836mm,8.191mm) on Top Layer And Track (63.026mm,3.835mm)(63.026mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2470.297mil|Location2.X=2482.186mil|Location1.Y=331.121mil|Location2.Y=342.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2470.297mil|Location2.X=2482.186mil|Location1.Y=331.121mil|Location2.Y=342.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad U5-1(61.836mm,8.191mm) on Top Layer And Track (63.026mm,8.738mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=255.875mil|Location2.Y=267.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=255.875mil|Location2.Y=267.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-2(61.836mm,6.922mm) on Top Layer And Track (63.026mm,3.835mm)(63.026mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=205.875mil|Location2.Y=217.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=205.875mil|Location2.Y=217.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-3(61.836mm,5.652mm) on Top Layer And Track (63.026mm,3.835mm)(63.026mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=155.875mil|Location2.Y=167.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2469.292mil|Location2.X=2480.542mil|Location1.Y=155.875mil|Location2.Y=167.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-4(61.836mm,4.381mm) on Top Layer And Track (63.026mm,3.835mm)(63.026mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2470.297mil|Location2.X=2482.126mil|Location1.Y=152.629mil|Location2.Y=163.879mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2470.297mil|Location2.X=2482.126mil|Location1.Y=152.629mil|Location2.Y=163.879mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad U5-4(61.836mm,4.381mm) on Top Layer And Track (63.026mm,3.835mm)(65.371mm,3.835mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2573.453mil|Location2.X=2585.342mil|Location1.Y=152.629mil|Location2.Y=163.879mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2573.453mil|Location2.X=2585.342mil|Location1.Y=152.629mil|Location2.Y=163.879mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad U5-5(66.561mm,4.381mm) on Top Layer And Track (63.026mm,3.835mm)(65.371mm,3.835mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=155.875mil|Location2.Y=167.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=155.875mil|Location2.Y=167.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-5(66.561mm,4.381mm) on Top Layer And Track (65.371mm,3.835mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=205.875mil|Location2.Y=217.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=205.875mil|Location2.Y=217.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-6(66.561mm,5.652mm) on Top Layer And Track (65.371mm,3.835mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=255.875mil|Location2.Y=267.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=255.875mil|Location2.Y=267.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-7(66.561mm,6.922mm) on Top Layer And Track (65.371mm,3.835mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2573.453mil|Location2.X=2585.283mil|Location1.Y=331.121mil|Location2.Y=342.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2573.453mil|Location2.X=2585.283mil|Location1.Y=331.121mil|Location2.Y=342.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.206mm &lt; 0.254mm) Between Pad U5-8(66.561mm,8.191mm) on Top Layer And Track (63.026mm,8.738mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.206mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=305.875mil|Location2.Y=317.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2574.458mil|Location2.X=2585.708mil|Location1.Y=305.875mil|Location2.Y=317.125mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.072mm &lt; 0.254mm) Between Pad U5-8(66.561mm,8.191mm) on Top Layer And Track (65.371mm,3.835mm)(65.371mm,8.738mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.072mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDCCNOFGWS0U25OCDWF5WAQXIERHJ4I0WYHI2L0FGA5311WC5DWNJJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2941.875mil|Location2.X=2953.125mil|Location1.Y=1280.077mil|Location2.Y=1291.327mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2941.875mil|Location2.X=2953.125mil|Location1.Y=1280.077mil|Location2.Y=1291.327mil|Absolute=True">Silk To Silk Clearance Constraint: (0.127mm &lt; 0.254mm) Between Text "SP+" (74.792mm,32.385mm) on Top Overlay And Track (75.057mm,31.242mm)(75.057mm,38.881mm) on Top Overlay Silk Text to Silk Clearance [0.127mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.582mil|Location2.X=2549.832mil|Location1.Y=347.469mil|Location2.Y=358.719mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2538.582mil|Location2.X=2549.832mil|Location1.Y=347.469mil|Location2.Y=358.719mil|Absolute=True">Silk To Silk Clearance Constraint: (0.208mm &lt; 0.254mm) Between Text "U5" (64.379mm,9.084mm) on Top Overlay And Track (63.026mm,8.738mm)(65.371mm,8.738mm) on Top Overlay Silk Text to Silk Clearance [0.208mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2565.281mil|Location2.X=2578.899mil|Location1.Y=347.6mil|Location2.Y=358.85mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\pepec\Documents\AgroRak\AgroRAK_MK3\AGRO_RAK_MK3\Protolink_Agro_LoRa.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2565.281mil|Location2.X=2578.899mil|Location1.Y=347.6mil|Location2.Y=358.85mil|Absolute=True">Silk To Silk Clearance Constraint: (0.235mm &lt; 0.254mm) Between Text "U5" (64.379mm,9.084mm) on Top Overlay And Track (65.371mm,3.835mm)(65.371mm,8.738mm) on Top Overlay Silk Text to Silk Clearance [0.235mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
